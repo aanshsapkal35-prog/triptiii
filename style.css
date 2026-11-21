@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root { --gold:#e8c98b; --cream:#fff7e9; --muted:#a99d91; }
+* { box-sizing:border-box; }
+html,body { margin:0; min-height:100%; }
+body {
+  min-height:100vh; overflow:hidden; color:var(--cream);
+  background:radial-gradient(ellipse at 50% 45%,#20202a 0%,#10111a 42%,#07080e 100%);
+  display:grid; place-items:center;
+}
+.grain { position:fixed; inset:-50%; pointer-events:none; opacity:.11; z-index:5;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  animation: grain .25s steps(2) infinite;
+}
+@keyframes grain { 0%{transform:translate(0,0)} 25%{transform:translate(2%,-1%)} 50%{transform:translate(-1%,2%)} 75%{transform:translate(1%,1%)} }
+.aurora { position:fixed; width:55vw; height:55vw; border-radius:50%; filter:blur(90px); opacity:.13; pointer-events:none; }
+.aurora-one { background:#a97839; top:-35vw; left:-10vw; }
+.aurora-two { background:#55508d; bottom:-40vw; right:-10vw; }
+.stage { width:min(1000px,94vw); height:min(760px,94vh); min-height:590px; position:relative; display:flex; flex-direction:column; justify-content:space-between; padding:34px 5vw 28px; text-align:center; }
+.topline { font:500 10px 'DM Sans',sans-serif; letter-spacing:.34em; color:#b9a98f; display:flex; justify-content:center; gap:17px; align-items:center; }
+.top-dot { color:var(--gold); font-size:14px; }
+.words { position:absolute; inset:22% 7% 25%; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+.eyebrow { font:500 10px 'DM Sans',sans-serif; letter-spacing:.28em; color:var(--gold); margin:0 0 28px; }
+h1 { font:500 clamp(42px,7.4vw,86px)/.98 'Cormorant Garamond',serif; max-width:850px; margin:0; color:var(--cream); text-shadow:0 0 38px #e8c98b24; transition:opacity .5s, transform .5s; }
+.subtext { font:400 clamp(12px,1.5vw,15px) 'DM Sans',sans-serif; color:#b8ada2; letter-spacing:.06em; margin:25px 0 0; transition:opacity .5s; }
+.fade-out { opacity:0; transform:translateY(12px) scale(.985); }
+.orbit { position:absolute; border:1px solid #d7b77c13; border-radius:50%; left:50%; top:49%; transform:translate(-50%,-50%); pointer-events:none; }
+.orbit-a { width:min(66vw,690px); height:min(66vw,690px); }
+.orbit-b { width:min(49vw,510px); height:min(49vw,510px); border-color:#d7b77c0b; }
+.bottom { width:min(430px,85%); margin:0 auto; }
+.progress-meta { display:flex; justify-content:space-between; color:#968a7c; font:500 9px 'DM Sans',sans-serif; letter-spacing:.2em; margin-bottom:10px; }
+.progress-track { height:1px; background:#ffffff20; overflow:hidden; }
+.progress-fill { height:100%; width:1%; background:linear-gradient(90deg,#8f6939,var(--gold)); transition:width .5s; box-shadow:0 0 12px #e8c98b; }
+.controls { display:flex; align-items:center; justify-content:center; gap:22px; margin-top:23px; }
+button { color:#d9c9ad; background:transparent; border:1px solid #d7b77c45; border-radius:50%; width:39px; height:39px; cursor:pointer; font-size:16px; transition:.2s; }
+button:hover { background:#d7b77c18; border-color:var(--gold); transform:translateY(-2px); }
+button.play { width:112px; border-radius:30px; font:500 9px 'DM Sans',sans-serif; letter-spacing:.2em; }
+.hint { font:400 9px 'DM Sans',sans-serif; letter-spacing:.15em; color:#6f6b69; margin:19px 0 0; }
+.particle { position:absolute; width:2px; height:2px; border-radius:50%; background:#f3d9a4; opacity:0; box-shadow:0 0 9px #f3d9a4; animation: float var(--duration) linear infinite; animation-delay:var(--delay); left:var(--x); top:110%; }
+@keyframes float { 0%{transform:translateY(0) translateX(0);opacity:0} 15%{opacity:.7} 85%{opacity:.35} 100%{transform:translateY(-120vh) translateX(35px);opacity:0} }
+@media(max-width:600px) { .stage{min-height:560px;padding:25px 5vw 20px}.words{inset:23% 4% 27%}.orbit-a{width:90vw;height:90vw}.orbit-b{width:72vw;height:72vw}.topline{font-size:8px;letter-spacing:.2em}.bottom{width:92%} }
